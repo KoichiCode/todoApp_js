@@ -15,4 +15,5 @@ body{
 
 .taskItem{
   margin-top: 10px;
+  list-style: none;
 }

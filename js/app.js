@@ -11,15 +11,22 @@ document.getElementById('addTaskBtn').addEventListener('click', function() {
     doingBtn.textContent = 'Doing';
     doingBtn.addEventListener('click', function () {
       todoList.removeChild(newTask);
+      doingBtn.remove();//Remove 'Doing' button when moved to 'Doing' list
       document.getElementById('doingList').appendChild(newTask);
     });
 
     var doneBtn = document.createElement('button');
     doneBtn.textContent = 'Done';
     doneBtn.addEventListener('click', function () {
-      todoList.removeChild(newTask);
+      if (newTask.parentNode.id == 'todoList'){
+        todoList.removeChild(newTask);
+      }else if (newTask.parentNode.id == 'doingList'){
       document.getElementById('doneList').appendChild(newTask);
-    });
+      }
+    doingBtn.remove();
+    doneBtn.remove();
+    document.getElementById('doneList').appendChild(newTask);
+   });
 
     newTask.appendChild(doingBtn);
     newTask.appendChild(doneBtn);
